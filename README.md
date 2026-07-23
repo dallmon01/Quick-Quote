@@ -29,59 +29,6 @@ no build step — works fully offline once installed on a device.
 - **Fully offline** — installs to the home screen and keeps working with zero
   signal after the first load
 
-## Current defaults
-
-These are just the starting values on a fresh install — everything below is
-editable per-device in the app's **Settings** tab, with no code changes needed.
-
-**Tiers**
-
-| Tier | Base price | Flat through | Rate beyond | Add-on discount |
-|---|---|---|---|---|
-| Plus | $400 | 1,000 sq ft | $0.08/sq ft | — |
-| Premium | $620 | 1,000 sq ft | $0.12/sq ft | 15% off add-ons |
-| Prestige | $1,100 | 1,000 sq ft | $0.16/sq ft | 30% off add-ons |
-
-**Add-ons (with a tier)**
-
-| Add-on | Price | Notes |
-|---|---|---|
-| Mold | $345 | 3 samples included, +$32 each after |
-| Pools and Spa | $125 | |
-| Radon | $200 | +miles × $0.76 × 2 trips |
-| Sewer Scope | $230 | |
-| Water Quality | $275 | |
-| 360 Tour | $200 | |
-| 360 Tour with Floor Plan | $240 | |
-
-**Standalone services (no tier required)**
-
-| Service | Price | Notes |
-|---|---|---|
-| Sewer Scope | $275 | +miles × $0.76 × 2 trips |
-| Mold | $345 | 3 samples included, +$32 each after |
-| Water Quality | $300 | |
-| Commercial Mold | $475 | |
-| Radon | $200 | +miles × $0.76 × 4 trips |
-| Pre-Drywall | $250 | +miles × $0.76 × 2 trips |
-
-**Global**: mileage rate $0.76/mile · first 55 miles free on trip mileage ·
-Military/First Responder discount 5% off the whole quote.
-
-## Deploy to GitHub Pages
-
-1. Create a new **public** repo on GitHub (e.g. `quick-quote`).
-2. Upload all files in this folder to the repo root, keeping the `icons/`
-   folder structure intact:
-   - `index.html`
-   - `manifest.json`
-   - `sw.js`
-   - `icons/icon-180.png`, `icons/icon-192.png`, `icons/icon-512.png`
-3. In the repo, go to **Settings → Pages**.
-4. Under **Source**, choose **Deploy from a branch**, branch **main**, folder **/ (root)**. Save.
-5. GitHub gives you a URL after a minute or two, typically:
-   `https://<your-username>.github.io/<repo-name>/`
-
 ## Install on iPhone / iPad
 
 1. Open the GitHub Pages URL in **Safari**.
@@ -101,15 +48,3 @@ needed. Use the **Settings** tab on the device itself; it saves there
 automatically. This only affects that one device — teammates installing fresh
 will get whatever is in `index.html`'s defaults, and existing installs keep
 whatever they already have saved locally.
-
-**Anything else (a fix, new feature, layout change)** — edit `index.html`
-and/or `sw.js`, then:
-
-1. Replace the changed file(s) in the repo (pencil icon → paste new content → commit).
-2. **Bump the cache version** at the top of `sw.js` — e.g. `quick-quote-v10` →
-   `quick-quote-v11` — any time `index.html` changes. This is what forces
-   already-installed copies to fetch the update instead of quietly continuing
-   to serve the old cached version. Skipping this step is the most common
-   reason a fix doesn't seem to show up.
-3. Open the app once with a connection so it grabs the update. After that it
-   works offline again as normal.
